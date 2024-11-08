@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             x:Class="Guauseo.Views.MiPerfilDueñoView"
+             Title="MiPerfilDueñoView"
+             BackgroundColor="#D9EAFF">
+
+    <ContentPage.BindingContext>
+        <vm:MiPerfilDueñoViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <StackLayout>
+                <Label 
+                Text="Mi Perfil" Style="{StaticResource LabelCabezeraStyle}"/>
+            </StackLayout>
+
+            <Frame BackgroundColor="#0081F8" Margin="20,30,20,30" Padding="20,10,20,20">
+                <StackLayout BackgroundColor="#0081F8">
+
+                    <Label Text="Datos del perfil" Margin="0,0,0,20" FontSize="18" />
+
+                    <Label Text="Correo electrónico" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Placeholder="correo" Keyboard="Email" Text="{Binding Correo}" Style="{StaticResource EntryRegistroStyle}" IsEnabled="False" /> <!--IsReadOnly="True"-->
+
+                    <Label Text="Contraseña" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Placeholder="contraseña" IsPassword="True" Text="{Binding Contraseña}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                    <Label Text="Nombre completo" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Placeholder="nombre" Text="{Binding Nombre}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                    <Label Text="Numero de cedula" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Placeholder="cedula" Keyboard="Numeric"  Text="{Binding Cedula}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                    <Label Text="Dirección" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Placeholder="dirección" Text="{Binding Direccion}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                    <Label Text="Numero de telefono" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Placeholder="telefono" Keyboard="Numeric" Text="{Binding Telefono}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Actualizar" Command="{Binding UpdateCommand}" Style="{StaticResource ButtonMiperfilStyle}"  />
+                    <Button Text="Eliminar" Command="{Binding DeleteCommand}" Style="{StaticResource ButtonMiPerfilEliminarStyle}"  />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

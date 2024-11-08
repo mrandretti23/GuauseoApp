@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Guauseo.Views.LoginPaseadorView"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             Title="LoginPaseadorView"
+             BackgroundColor="#D9EAFF">
+
+    <ContentPage.BindingContext>
+        <vm:LoginPaseadorViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+
+            <!--Imagen Guauseo-->
+            <Image
+        Source="logo_guauseo.png"
+        HeightRequest="185"
+        Aspect="AspectFit"
+        SemanticProperties.Description="Logo Guauseo" 
+        Margin="0,50,0,20"/>
+
+            <!--Texto Guauseo-->
+            <Label
+        Text="Paseador Guauseo"
+        Style="{StaticResource Headline}"
+        SemanticProperties.HeadingLevel="Level1"
+        Margin="0,10,0,0"
+        Padding="15"
+        TextColor="White"
+        BackgroundColor="#512AA4"/>
+
+            <!--Seccion de login-->
+            <Grid BackgroundColor="#512AA4" Margin="20,30,20,20" Padding="10">
+
+                <StackLayout>
+
+                    <Label Text="Usuario" Style="{StaticResource LabelLoginPaseadorStyle}" />
+                    <Entry Placeholder="escribe tu E-mail" Text="{Binding Correo}" Style="{StaticResource EntryLoginPaeadorStyle}"/>
+
+                    <Label Text="Contraseña" Style="{StaticResource LabelLoginPaseadorStyle}" />
+                    <Entry Placeholder="escribe tu contraseña" IsPassword="True" Text="{Binding Contraseña}" Style="{StaticResource EntryLoginPaeadorStyle}" />
+
+                    <Button Text="Iniciar sesión" x:Name="btn_iniciarSesion" Command="{Binding LoginCommand}" Style="{StaticResource ButtonLoginPaseadorStyle}" />
+
+                    <Label Text="Notienes una cuenta ?" HorizontalTextAlignment="Center" Style="{StaticResource LabelLoginPaseadorStyle}"/>
+                    <Button Text="Registrate" x:Name="btn_registrate" Clicked="btn_registrate_Clicked" Style="{StaticResource ButtonRegistratePaseadorStyle}" />
+
+                </StackLayout>
+
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

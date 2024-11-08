@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             x:Class="Guauseo.Views.RegistroPaseadorView"
+             Title="RegistroPaseadorView"
+             BackgroundColor="#D9EAFF">
+
+    <ContentPage.BindingContext>
+        <vm:RegistroPaseadorViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Image
+    Source="logo_guauseo.png"
+    HeightRequest="105"
+    Aspect="AspectFit"
+    SemanticProperties.Description="dot net bot in a race car number eight" 
+    Margin="270,20,0,0"/>
+
+            <StackLayout BackgroundColor="#512AA4" Margin="20,20,20,30" Padding="20,10,20,20">
+                
+                <Label Text="Registro" Margin="0,0,0,20" FontSize="18" />
+
+                <Label Text="Correo electrónico" Style="{StaticResource LabelRegistroStyle}" />
+                <Entry Placeholder="escribe tu dirección de correo" Keyboard="Email" Text="{Binding Correo}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                <Label Text="Contraseña" Style="{StaticResource LabelRegistroStyle}" />
+                <Entry Placeholder="escribe tu contraseña" IsPassword="True" Text="{Binding Contraseña}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                <Label Text="Nombre completo" Style="{StaticResource LabelRegistroStyle}" />
+                <Entry Placeholder="escribe tu nombre" Text="{Binding Nombre}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                <Label Text="Numero de cedula" Style="{StaticResource LabelRegistroStyle}" />
+                <Entry Placeholder="escribe tu numero de cedula" Keyboard="Numeric"  Text="{Binding Cedula}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                <Label Text="Dirección" Style="{StaticResource LabelRegistroStyle}" />
+                <Entry Placeholder="escribe tu dirección" Text="{Binding Direccion}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                <Label Text="Numero de telefono" Style="{StaticResource LabelRegistroStyle}" />
+                <Entry Placeholder="escribe tu numero de telefono" Keyboard="Numeric" Text="{Binding Telefono}" Style="{StaticResource EntryRegistroStyle}"/>
+
+                <Button Text="Registrarse" Command="{Binding RegistroCommand}" Style="{StaticResource ButtonRegistroPaseadorStyle}" />
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>

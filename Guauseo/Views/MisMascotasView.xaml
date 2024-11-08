@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             x:Class="Guauseo.Views.MisMascotasView"
+             Title="MisMascotasView"
+             BackgroundColor="#D9EAFF">
+
+    <ContentPage.BindingContext>
+        <vm:MisMascotasViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <!--cabezera de pagina-->
+            <StackLayout>
+                <Label 
+            Text="Mis Mascotas" Style="{StaticResource LabelCabezeraStyle}"/>
+            </StackLayout>
+
+            <Frame BackgroundColor="#0081F8" Margin="30,30,30,30" Padding="10,10,10,20">
+                <StackLayout Padding="10,20,10,0">
+
+                    <Frame Margin="20,20,20,40" Padding="0,5,0,0">
+                        <StackLayout>
+                            <Image
+                        Source="nueva_mascota.png"
+                        HeightRequest="85"
+                        Aspect="AspectFit"
+                        SemanticProperties.Description="logo mascota" 
+                        />
+                            <Button Text="Nueva Mascota" Command="{Binding AddMascotaCommand}" Style="{StaticResource ButtonInicioStyle}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="Mascotas Registradas" TextColor="White" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+
+                    <Frame Margin="0,5,0,40" Padding="0,5,0,0">
+                        <CollectionView ItemsSource="{Binding Mascotas}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BackgroundColor="#D9EAFF" Margin="15,10,15,10" Padding="0">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal" Padding="10">
+                                                <Frame Margin="0" Padding="0" CornerRadius="20">
+                                                    <Image Source="{Binding Foto}" WidthRequest="100" HeightRequest="100" Margin="-15"/>
+                                                </Frame>
+                                                <StackLayout Orientation="Vertical" Padding="10">
+                                                    <Label Text="{Binding Nombre}" FontSize="Medium" />
+                                                    <Label Text="{Binding Edad}" FontSize="Small" />
+                                                    <Label Text="{Binding Raza}" FontSize="Small" />
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                                                <Button Text="Actualizar" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MisMascotasViewModel}}, Path=UpdateMascotaCommand}" CommandParameter="{Binding Codigo}"  Style="{StaticResource ButtonActualizarMascotaStyle}" />
+                                                <Button Text="Eliminar" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MisMascotasViewModel}}, Path=DeleteMascotaCommand}" CommandParameter="{Binding Codigo}" Style="{StaticResource ButtonEliminarMascotaStyle}"  />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

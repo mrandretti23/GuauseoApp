@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Guauseo.MainPage"
+             Title=""
+             BackgroundColor="#D9EAFF">
+             
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <!--Imagen de la pagina-->
+            <Image
+            Source="logo_guauseo.png"
+            HeightRequest="285"
+            Aspect="AspectFit"
+            SemanticProperties.Description="dot net bot in a race car number eight"
+            Margin="0,50,0,20"/>
+           
+            <!--Grid de botones ingreso a paginas de  dueño y paseador-->
+            <Frame BackgroundColor="#0081F8">
+                <Grid>
+                    <StackLayout Padding="30" HorizontalOptions="Center">
+
+                    <Button x:Name="btn_Dueño" Text="Dueño Guauseo" Clicked="OnCounterClickedDueño" Style="{StaticResource ButtonLoginStyle}"/>
+                    <Button x:Name="btn_Paseador" Text="Paseador Guauseo"  Clicked="btn_Paseador_ClickedPaseador" Style="{StaticResource ButtonLoginStyle}"/>
+
+                </StackLayout>
+            </Grid>
+            </Frame>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

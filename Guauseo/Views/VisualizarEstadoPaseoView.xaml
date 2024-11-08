@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="Guauseo.Views.VisualizarEstadoPaseoView"
+             Title="VisualizarEstadoPaseoView"
+             BackgroundColor="#D9EAFF">
+
+    <ContentPage.BindingContext>
+        <vm:VisualizarEstadoPaseoViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <!--cabezera de pagina-->
+            <StackLayout>
+                <Label 
+                Text="Estado del paseo" Style="{StaticResource LabelCabezeraStyle}"/>
+            </StackLayout>
+
+            <Frame Padding="20" Margin="20" BackgroundColor="#0081F8" >
+                <StackLayout>
+
+                    <Label Text="Mi Ubicación"  Style="{StaticResource LabelSolicitarPaseoStyle}"/>
+                    <Entry Text="{Binding UbicacionNombre}" IsReadOnly="True" Style="{StaticResource EntryVisualizarEstadoStyle}"/>
+
+                    <Label Text="Detalles" Style="{StaticResource LabelVisualizarEstadoStyle}"/>
+
+                    <maps:Map x:Name="map"
+                    IsVisible="{Binding IsMapaVisible}" WidthRequest="320" HeightRequest="250"/>
+                    
+                    <Frame Margin="0,5,0,0">
+                        <StackLayout BackgroundColor="White">
+                            <Label Text="Mascotas:"  Style="{StaticResource LabelVisualizarEstadoStyle}"/>
+                            
+                            <Label Text="{Binding NombreMascota1}" FontSize="20" TextColor="Black" />
+
+                            <Label Text="{Binding NombreMascota2}" FontSize="20" TextColor="Black"/>
+
+                            <Label Text="Tiempo de paseo:"  Style="{StaticResource LabelVisualizarEstadoStyle}"/>
+                            <Label Text="{Binding TiempoSeleccionado}" Style="{StaticResource LabelVisualizarEstado2Style}"/>
+
+                            <Label Text="Estado:" Style="{StaticResource LabelVisualizarEstadoStyle}" />
+                            <Label Text="{Binding EstadoPaseo}" Style="{StaticResource LabelVisualizarEstado2Style}"/>
+
+                            <Label Text="{Binding ValorPagar}" FontSize="20" TextColor="Green" Margin="0,0,0,20"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0,5,0,0">
+                        <StackLayout BackgroundColor="White">
+
+                            <Label Text="Datos del Paseador:" Style="{StaticResource LabelVisualizarEstado2Style}" IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}" />
+
+                            <Label Text="Nombre del paseador:" Style="{StaticResource LabelVisualizarEstadoStyle}" IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}" />
+                            <Label Text="{Binding NombrePaseador}" Style="{StaticResource LabelVisualizarEstado2Style}" IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}" />
+
+                            <Label Text="Número de teléfono:" Style="{StaticResource LabelVisualizarEstadoStyle}" IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}" />
+                            <Label Text="{Binding TelefonoPaseador}" Style="{StaticResource LabelVisualizarEstado2Style} " IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}" />
+
+                            <Label Text="Cédula:" Style="{StaticResource LabelVisualizarEstadoStyle}" IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}" />
+                            <Label Text="{Binding CedulaPaseador}" Style="{StaticResource LabelVisualizarEstado2Style}" IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}"/>
+
+                            <Label Text="Calificación:" Style="{StaticResource LabelVisualizarEstadoStyle}" IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}" />
+                            <Label Text="{Binding CalificacionPromedio}" Style="{StaticResource LabelVisualizarEstado2Style}" IsVisible="{Binding EstadoPaseo, Converter={StaticResource AcceptedStateConverter}}"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Button Text="Cancelar Paseo" Command="{Binding CancelarPaseoCommand}" Style="{StaticResource ButtonVisualizarEstadoStyle}" IsVisible="{Binding IsCancelarPaseoVisible}"/>
+                        
+
+                        
+
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="Guauseo.Views.GoogleMapView"
+             Title="GoogleMapView"
+             BackgroundColor="#D9EAFF">
+
+    
+    <ContentPage.BindingContext>
+        <vm:GoogleMapViewModel />
+    </ContentPage.BindingContext>
+
+    <Frame Padding="10" BackgroundColor="#0081F8" Margin="20">
+        <Grid>
+            <StackLayout>
+
+                <Label Text="Buscar una dirección" Margin="0,5,0,0" Style="{StaticResource LabelMapStyle}"/>
+                <Entry x:Name="AddressEntry" Placeholder="Pon tu dirección" Text="{Binding Address}" Style="{StaticResource EntryMapStyle}" />
+                <Button Text="Buscar" Command="{Binding SearchCommand}" Style="{StaticResource ButtonMapStyle}"/>
+                <Label Text="Selecciona tu ubicación en el mapa" Style="{StaticResource LabelMapStyle}" HorizontalOptions="Center"/>
+                <maps:Map x:Name="mape" MapClicked="OnMapClicked" WidthRequest="320" HeightRequest="500">
+                 <!-- Other map properties -->
+                </maps:Map>
+                <Button Text="Confirmar Ubicación" Command="{Binding ConfirmLocationCommand}" Style="{StaticResource ButtonMapStyle}"/>
+            </StackLayout>
+        </Grid>
+    </Frame>
+</ContentPage>

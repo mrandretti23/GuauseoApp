@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             x:Class="Guauseo.Views.LoginDueñoView"
+             Title=""
+             BackgroundColor="#D9EAFF">
+
+    <ContentPage.BindingContext>
+        <vm:LoginDueñoViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+
+            <!--Imagen Guauseo-->
+            <Image
+            Source="logo_guauseo.png"
+            HeightRequest="185"
+            Aspect="AspectFit"
+            SemanticProperties.Description="Logo Guauseo" 
+            Margin="0,50,0,20"/>
+
+            <!--Texto Guauseo-->
+            <Label
+            Text="Dueño Guauseo"
+            Style="{StaticResource Headline}"
+            SemanticProperties.HeadingLevel="Level1"
+            Margin="0,10,0,0"
+            Padding="15"
+            TextColor="White"
+            BackgroundColor="#0081F8"/>
+
+            <!--Seccion de login-->
+            <Grid BackgroundColor="#0081F8" Margin="20,30,20,20" Padding="10">
+
+                <StackLayout>
+
+                    <Label Text="Usuario" Style="{StaticResource LabelLoginStyle}" />
+                    <Entry Placeholder="escribe tu E-mail" Text="{Binding Correo}" Style="{StaticResource EntryLoginStyle}"/>
+                    
+                    <Label Text="Contraseña" Style="{StaticResource LabelLoginStyle}" />
+                    <Entry Placeholder="escribe tu contraseña" IsPassword="True" Text="{Binding Contraseña}" Style="{StaticResource EntryLoginStyle}" />
+                    
+                    <Button Text="Iniciar sesión" x:Name="btn_iniciarSesion" Command="{Binding LoginCommand}" Style="{StaticResource ButtonLoginStyle}" />
+                    
+                    <Label Text="Notienes una cuenta ?" HorizontalTextAlignment="Center" Style="{StaticResource LabelLoginStyle}"/>
+                    <Button Text="Registrate" x:Name="btn_registrate" Clicked="btn_registrate_Clicked" Style="{StaticResource ButtonRegistrateStyle}" />
+                    
+                    <!--<Label Text="{Binding ErrorMessage}" TextColor="Red" />-->
+                </StackLayout>
+
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

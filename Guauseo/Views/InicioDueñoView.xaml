@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Guauseo.Views.InicioDueñoView"
+             Title="InicioDueñoView"
+             BackgroundColor="#D9EAFF">
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            
+            <!--cabezera de pagina-->
+            <StackLayout>
+                <Label 
+                Text="Inicio" Style="{StaticResource LabelCabezeraStyle}"/>
+            </StackLayout>
+
+
+            <Frame BackgroundColor="#0081F8" Margin="30,70,30,30" Padding="20,10,20,20">
+
+                <StackLayout Padding="20">
+
+                    <Frame Margin="10,20,10,40" Padding="0,5,0,0">
+                        <StackLayout>
+                            <Image
+                            Source="logo_mascotas.png"
+                            HeightRequest="65"
+                            Aspect="AspectFit"
+                            SemanticProperties.Description="logo mascota" 
+                            />
+                            <Button Text="MIS MASCOTAS" Clicked="MisMascotasButton_Clicked" Style="{StaticResource ButtonInicioStyle}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="10,20,10,40" Padding="0,5,0,0">
+                        <StackLayout>
+                            <Image
+                            Source="logo_paseo.jpg"
+                            HeightRequest="65"
+                            Aspect="AspectFit"
+                            SemanticProperties.Description="logo paseo" 
+                            />
+                            <Button Text="SOLICITAR PASEO" Clicked="SolicitarPaseoButton_Clicked" Style="{StaticResource ButtonInicioStyle}"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="10,20,10,40" Padding="0,5,0,0">
+                        <StackLayout>
+                            <Image
+                            Source="logo_perfil.jpg"
+                            HeightRequest="65"
+                            Aspect="AspectFit"
+                            SemanticProperties.Description="logo perfil" 
+                            />
+                            <Button Text="MI PERFIL" Clicked="MiPerfilButton_Clicked" Style="{StaticResource ButtonInicioStyle}"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

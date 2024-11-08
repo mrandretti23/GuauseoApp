@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             x:Class="Guauseo.Views.CalificacionView"
+             Title="CalificacionView"
+             BackgroundColor="#D9EAFF">
+
+
+    <ContentPage.BindingContext>
+        <vm:CalificacionViewModel />
+    </ContentPage.BindingContext>
+
+    
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <!--cabezera de pagina-->
+            <StackLayout>
+                <Label 
+                Text="Califica tu paseo" Style="{StaticResource LabelCabezeraStyle}"/>
+            </StackLayout>
+
+
+            <Frame Padding="20" Margin="20" BackgroundColor="#0081F8" >
+                <StackLayout>
+                    <Label Text="Mi Ubicación"  Style="{StaticResource LabelSolicitarPaseoStyle}"/>
+                    <Entry Text="{Binding UbicacionNombre}"
+               Placeholder="Ubicación"
+               IsReadOnly="True" Style="{StaticResource EntryVisualizarEstadoStyle}" />
+
+                    <Label Text="Detalles" Style="{StaticResource LabelVisualizarEstadoStyle}"/>
+
+                    <Frame Margin="0,5,0,0">
+                        <StackLayout BackgroundColor="White">
+                            <!-- Información del Paseo -->
+                            <Label Text="Mascotas:" Style="{StaticResource LabelVisualizarEstadoStyle}" />
+                            <Label Text="{Binding NombreMascota1}" FontSize="20" TextColor="Black"/>
+                            <Label Text="{Binding NombreMascota2}" FontSize="20" />
+
+                            <Label Text="Tiempo de Paseo:" Style="{StaticResource LabelVisualizarEstadoStyle}" />
+                            <Label Text="{Binding TiempoPaseo}" Style="{StaticResource LabelVisualizarEstado2Style}"/>
+
+                            <Label Text="Estado del Paseo:" Style="{StaticResource LabelVisualizarEstadoStyle}" />
+                            <Label Text="{Binding EstadoPaseo}" Style="{StaticResource LabelVisualizarEstado2Style}"/>
+
+                            <Label Text="Valor:" Style="{StaticResource LabelVisualizarEstadoStyle}" />
+                            <Label Text="{Binding ValorPagar}" FontSize="20" TextColor="Green" Margin="0,0,0,5"/>
+
+                            <Label Text="Paseador:" Style="{StaticResource LabelVisualizarEstadoStyle}" />
+                            <Label Text="{Binding NombrePaseador}" Style="{StaticResource LabelVisualizarEstado2Style}"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="Califica el paseo" Style="{StaticResource LabelVisualizarEstadoStyle}" />
+                    <Picker Title="Selecciona la nota del paseo" SelectedItem="{Binding SelectedPatitas}" Style="{StaticResource PickerRegistroMacotaStyle}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>1 patita</x:String>
+                                <x:String>2 patitas</x:String>
+                                <x:String>3 patitas</x:String>
+                                <x:String>4 patitas</x:String>
+                                <x:String>5 patitas</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Label Text="Comentarios:" Style="{StaticResource LabelVisualizarEstadoStyle}" />
+                    <Editor Text="{Binding Comentario}" Placeholder="Deja tu comentario" HeightRequest="100" BackgroundColor="White" FontSize="17" TextColor="Black" Margin="5,0,5,10"/>
+
+                    <Button Text="Ahora no" Command="{Binding AhoraNoCommand}" Style="{StaticResource ButtonAhoraNoStyle}" />
+                    <Button Text="Calificar" Command="{Binding CalificarCommand}" Style="{StaticResource ButtonCalificarStyle}"/>
+
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

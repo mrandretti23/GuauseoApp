@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Guauseo.ViewModels"
+             x:Class="Guauseo.Views.ModificarMascotaView"
+             Title="ModificarMascotaView"
+             BackgroundColor="#D9EAFF">
+
+    <ContentPage.BindingContext>
+        <vm:ModificarMascotaViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+
+        <VerticalStackLayout>
+            <Frame BackgroundColor="#0081F8" Margin="20,20,20,30" Padding="20,10,20,20" CornerRadius="20" >
+                <StackLayout>
+                    <Label Text="Modifica tu Mascota" Margin="0,0,0,20" FontSize="18"  />
+
+                    <Button Text="Ver Galería" Command="{Binding PickPhotoCommand}" Style="{StaticResource ButtonVerGaleriaStyle}" />
+                    <Button Text="Tomar Foto" Command="{Binding TakePhotoCommand}" Style="{StaticResource ButtonTomarFotoStyle}"/>
+
+                    <Image Source="{Binding Foto}" MaximumWidthRequest="200" MaximumHeightRequest="200" />
+
+                    <Label Text="Nombre de la mascota" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Text="{Binding Nombre}" Placeholder="escribe el nombre de tu perro" Style="{StaticResource EntryRegistroStyle}" />
+
+                    <Label Text="Raza" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Text="{Binding Raza}" Placeholder="escribe la raza de tu perro" Style="{StaticResource EntryRegistroStyle}" />
+
+                    <Label Text="Edad" Style="{StaticResource LabelRegistroStyle}" />
+                    <Entry Text="{Binding Edad}" Placeholder="escribe la edad de tu perro" Keyboard="Numeric" Style="{StaticResource EntryRegistroStyle}" />
+
+                    <Label Text="Sexo" Style="{StaticResource LabelRegistroStyle}" />
+                    <Picker Title="Selecciona el sexo del perro" SelectedItem="{Binding Sexo}" Style="{StaticResource PickerRegistroMacotaStyle}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Macho</x:String>
+                                <x:String>Hembra</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Label Text="Tamaño" Style="{StaticResource LabelRegistroStyle}" />
+                    <Picker Title="Selecciona el tamaño del perro" SelectedItem="{Binding Tamaño}" Style="{StaticResource PickerRegistroMacotaStyle}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Pequeño</x:String>
+                                <x:String>Mediano</x:String>
+                                <x:String>Grande</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Label Text="Agresividad" Style="{StaticResource LabelRegistroStyle}" />
+                    <Picker Title="Selecciona la agresividad de tu perro" SelectedItem="{Binding Agresividad}" Style="{StaticResource PickerRegistroMacotaStyle}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Baja</x:String>
+                                <x:String>Media</x:String>
+                                <x:String>Alta</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Label Text="Necesidades Especiales" Style="{StaticResource LabelRegistroStyle}" />
+                    <Editor Text="{Binding Necesidades}" Placeholder="Escribe si tu perro tiene alguna necesidad especial" AutoSize="TextChanges" Style="{StaticResource PickerRegistroMacotaStyle}"/>
+
+                    <Button Text="Actualizar Mascota" Command="{Binding UpdateCommand}" Style="{StaticResource ButtonRegistroStyle}"/>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
